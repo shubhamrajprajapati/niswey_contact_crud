@@ -27,6 +27,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('contacts.create') }}">Add Contact</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-sm btn-warning text-light" target="_blank" href="{{ asset('example.xml') }}">
+                        Sample Contact XML
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>

@@ -1,65 +1,165 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Niswey Contact Manager
 
-## About Laravel
+This is a **Contact Manager** web application built using the **Laravel Framework**. It allows users to manage their contacts, import contacts in bulk via XML, and export contacts to CSV or XML formats.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+![Screenshot](public/screenshot.png)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **CRUD Operations**:  
+  Users can **Create**, **Read**, **Update**, and **Delete** contacts from the application.
 
-## Learning Laravel
+- **Bulk Import**:  
+  Users can import contacts in bulk using **XML** files.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Export Contacts**:  
+  Users can export contacts to **CSV** or **XML** formats.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Confirmation Modals**:  
+  Confirmation modals are used for actions like **deleting contacts**.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Responsive Design**:  
+  The application uses **Bootstrap** for responsive design, ensuring it looks good on all devices.
 
-## Laravel Sponsors
+## Prerequisites
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Before you start, ensure you have the following installed:
 
-### Premium Partners
+- **PHP** (>= 8.0)
+- **Composer** (for managing PHP dependencies)
+- **Laravel** (latest version compatible with your PHP setup)
+- **MySQL** (or any other database)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Installation Steps
 
-## Contributing
+### Step 1: Clone the repository
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Clone the repository from GitHub:
+
+```bash
+git clone https://github.com/shubhamrajprajapati/niswey_contact_crud.git
+cd niswey_contact_crud
+```
+### Step 2: Install dependencies
+
+Run the following command to install all the required dependencies:
+
+```bash
+composer install
+```
+
+### Step 3: Set up your environment
+
+Copy the `.env.example` file and rename it to `.env`:
+
+```bash
+cp .env.example .env
+```
+
+Edit the `.env` file and configure the database connection. Here's an example using MySQL:
+
+```bash
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=niswey_contact_manager
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### Step 4: Generate the application key
+
+Run the following command to generate the Laravel application key:
+
+```bash
+php artisan key:generate
+```
+
+### Step 5: Migrate the database
+
+Run the database migrations to create the necessary tables:
+
+```bash
+php artisan migrate
+```
+
+### Step 6: Serve the application
+
+Start the Laravel development server:
+
+```bash
+php artisan serve
+```
+The application will be accessible at `http://localhost:8000`.
+
+## Features in Detail
+
+### 1. Managing Contacts (CRUD)
+
+You can easily **Add**, **Edit**, and **Delete** contacts within the application.
+
+- **Add Contacts**: 
+  Users can create new contacts by entering a **name**, and **phone number**. These details are stored in the database.
+
+- **Edit Contacts**: 
+  Existing contacts can be modified. Users can update any details (name, phone number) and save the changes.
+
+- **Delete Contacts**: 
+  Contacts can be deleted with a single click. Deleting contacts is protected with a **confirmation modal** (explained below) to prevent accidental deletions.
+
+Each contact has the following fields:
+- **Name**: The name of the contact.
+- **Phone Number**: The contact's phone number.
+
+### 2. Bulk Import Contacts
+
+You can **import contacts in bulk** via an **XML file**.
+
+- The XML file should follow a specific structure to be processed correctly. Each contact's data should be wrapped in an individual XML element.
+- The application parses the XML file, extracts contact details, and adds them to the contact list in the database.
+
+Example XML structure:
+
+```xml
+<contacts>
+  <contact>
+    <name>John Doe</name>
+    <phone>123456789</phone>
+    <email>john.doe@example.com</email>
+  </contact>
+  <contact>
+    <name>Jane Smith</name>
+    <phone>987654321</phone>
+    <email>jane.smith@example.com</email>
+  </contact>
+</contacts>
+```
+### 3. Export Contacts (CSV & XML)
+
+You can export your contacts to **CSV** or **XML** files.
+
+- **CSV Export**:  
+  Contacts can be exported in **CSV** format, which can be opened in spreadsheet applications like Microsoft Excel or Google Sheets.
+  
+- **XML Export**:  
+  Alternatively, contacts can be exported in **XML** format, which can be used in other applications or for data processing.
+
+Both export options provide the user with an easy way to backup their contacts or use the data in other applications.
+
+### 4. Delete Confirmation
+
+Deleting a contact is protected by a **confirmation modal** to avoid accidental deletions.
+
+- **Confirmation Modal**:  
+  When the user clicks the **Delete** button, a modal will pop up asking them to confirm their decision.
+
+This step ensures that users do not accidentally delete contacts without intention. If they confirm, the contact will be deleted from the database.
 
 ## Code of Conduct
 
 In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
