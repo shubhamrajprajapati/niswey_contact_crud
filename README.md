@@ -4,7 +4,10 @@
 
 This is a **Contact Manager** web application built using the **Laravel Framework**. It allows users to manage their contacts, import contacts in bulk via XML, and export contacts to CSV or XML formats.
 
-![Screenshot](public/screenshot.png)
+## Demo Video
+Click on the screenshot to watch demo video. Feel free to check it out and test the features!
+
+[![Watch the demo video here](public/screenshot.png)](public/demo.mp4)
 
 ## Features
 
